@@ -37,7 +37,7 @@
  * @version //autogen//
  * @access private
  */
-interface ezcTemplateAstNodeVisitor// extends ezcTemplateAstNodeVisitor
+interface ezcTemplateAstNodeVisitor // extends ezcTemplateAstNodeVisitor
 {
     /**
      * Visits a node containing a builtin constant type.
