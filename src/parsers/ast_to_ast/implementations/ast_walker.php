@@ -282,7 +282,7 @@ class ezcTemplateAstWalker implements ezcTemplateAstNodeVisitor
         array_unshift( $this->statements, 0);
         array_unshift( $this->offset, 0);
 
-        $b = clone( $body );
+        $b = clone $body;
 
         for( $i = 0; $i < sizeof( $b->statements ); $i++)
         {
@@ -309,7 +309,7 @@ class ezcTemplateAstWalker implements ezcTemplateAstNodeVisitor
         array_unshift( $this->statements, 0);
         array_unshift( $this->offset, 0);
 
-        $b = clone( $body );
+        $b = clone $body;
 
         for( $i = 0; $i < sizeof( $b->statements ); $i++)
         {

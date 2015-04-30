@@ -240,7 +240,7 @@ class ezcTemplateTstToAstTransformer implements ezcTemplateTstNodeVisitor
     private function appendOperatorRecursively( ezcTemplateOperatorTstNode $type, ezcTemplateOperatorAstNode $astNode, $currentParameterNumber = 0)
     {
         $this->allowArrayAppend = false;
-        $node = clone( $astNode );
+        $node = clone $astNode;
         
         try
         {
