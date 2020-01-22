@@ -33,7 +33,7 @@ class ezcTemplateTextBlockElementTest extends ezcTestCase
 {
     public static function suite()
     {
-         return new PHPUnit_Framework_TestSuite( "ezcTemplateTextBlockElementTest" );
+         return new PHPUnit\Framework\TestSuite( "ezcTemplateTextBlockElementTest" );
     }
 
     /**

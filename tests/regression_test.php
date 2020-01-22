@@ -39,7 +39,6 @@ include_once ("custom_blocks/links.php");
 include_once ("custom_blocks/cblock.php");
 include_once ("custom_blocks/sha1.php");
 include_once ("override.php");
-include_once ("UnitTest/src/regression_suite.php");
 
 class ezcTemplateRegressionTest extends ezcTestCase
 {
@@ -105,7 +104,7 @@ class ezcTemplateRegressionTest extends ezcTestCase
     {
     }
 
-    public function count()
+    public function count() : int
     {
         // We return 1 here since we have startTest/endTest for each .in file
         return 1;

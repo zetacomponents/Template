@@ -33,7 +33,7 @@ class ezcTemplateValidationItemTest extends ezcTestCase
 {
     public static function suite()
     {
-         return new PHPUnit_Framework_TestSuite( "ezcTemplateValidationItemTest" );
+         return new PHPUnit\Framework\TestSuite( "ezcTemplateValidationItemTest" );
     }
 
     /**

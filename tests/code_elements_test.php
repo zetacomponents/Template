@@ -33,7 +33,7 @@ class ezcTemplateCodeElementsTest extends ezcTestCase
 {
     public static function suite()
     {
-         return new PHPUnit_Framework_TestSuite( "ezcTemplateCodeElementsTest" );
+         return new PHPUnit\Framework\TestSuite( "ezcTemplateCodeElementsTest" );
     }
 
     protected function setUp()

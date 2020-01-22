@@ -35,7 +35,7 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
 {
     public static function suite()
     {
-         return new PHPUnit_Framework_TestSuite( __CLASS__ );
+         return new PHPUnit\Framework\TestSuite( __CLASS__ );
     }
 
     /**
@@ -53,7 +53,7 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
         // // required because of Reflection autoload bug
         class_exists( 'ezcTemplateSourceCode' );
         // class_exists( 'ezcTemplateManager' );
-        $this->manager = new ezcTemplateManager();
+        $this->manager = new ezcTemplate();
         PHPUnit_Extensions_MockObject_Mock::generate( 'ezcTemplateParser', array( "reportElementCursor" ), 'MockElement_ezcTemplateParser' );
 
         $this->basePath = realpath( dirname( __FILE__ ) ) . '/';

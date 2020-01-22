@@ -33,7 +33,7 @@ class ezcTemplateSourceCodeTest extends ezcTestCase
 {
     public static function suite()
     {
-         return new PHPUnit_Framework_TestSuite( "ezcTemplateSourceCodeTest" );
+         return new PHPUnit\Framework\TestSuite( "ezcTemplateSourceCodeTest" );
     }
 
     protected function setUp()

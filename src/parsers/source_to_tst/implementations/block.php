@@ -160,7 +160,7 @@ class ezcTemplateBlockSourceToTstParser extends ezcTemplateSourceToTstParser
 
         // Parse the {ldelim} and {rdelim}
         $matches = $this->currentCursor->pregMatchComplete( "#^(ldelim|rdelim)(?:[^a-zA-Z0-9_])#" );
-        $name = $matches[1][0];
+        $name = isset( $matches[1] ) ? $matches[1][0] : '';
         $ldelim = $name == 'ldelim' ? true : false;
         $rdelim = $name == 'rdelim' ? true : false;
         if ( $ldelim || $rdelim )
