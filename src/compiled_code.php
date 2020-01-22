@@ -249,7 +249,7 @@ class ezcTemplateCompiledCode
     }
 
     /**
-     * Finds the compiled file based on the stream path and template options.
+     * Finds the compiled file based on the stream path.
      *
      * Returns the compiled code object which can be used for execution or queried for more info.
      *
@@ -260,9 +260,6 @@ class ezcTemplateCompiledCode
      */
     public static function findCompiled( $location, ezcTemplateOutputContext $context, ezcTemplate $template )
     {
-        $options = 'ezcTemplate::options(' .
-                   false /*(bool)$template->outputDebugEnabled*/ . '-' .
-                   false /*(bool)$template->compiledDebugEnabled*/ . ')';
         $identifier = md5( 'ezcTemplateCompiled(' . $location . ')' );
         $name = basename( $location, '.ezt' );
 

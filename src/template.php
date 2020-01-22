@@ -433,12 +433,7 @@ class ezcTemplate
      */
     public function generateOptionHash()
     {
-        // We have to shift in two steps as << 32 does not work on PHP on 32 bit machines
-        // We are shifting to get correct negative number.
-        return base_convert( ( -1 << 1 << 31 ) | crc32( 'ezcTemplate::options(' .
-                                    false /*(bool)$this->outputDebugEnabled*/ . '-' .
-                                    false /*(bool)$this->compiledDebugEnabled*/ . ')' ),
-                             10, 36 );
+        return 'updqr0';
     }
 }
 ?>
