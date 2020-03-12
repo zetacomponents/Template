@@ -260,9 +260,6 @@ class ezcTemplateCompiledCode
      */
     public static function findCompiled( $location, ezcTemplateOutputContext $context, ezcTemplate $template )
     {
-        $options = 'ezcTemplate::options(' .
-                   false /*(bool)$template->outputDebugEnabled*/ . '-' .
-                   false /*(bool)$template->compiledDebugEnabled*/ . ')';
         $identifier = md5( 'ezcTemplateCompiled(' . $location . ')' );
         $name = basename( $location, '.ezt' );
 
@@ -273,4 +270,3 @@ class ezcTemplateCompiledCode
         return new ezcTemplateCompiledCode( $identifier, $path, $context, $template );
     }
 }
-?>
