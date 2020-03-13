@@ -27,6 +27,10 @@
 
 require_once "invariant_parse_cursor.php";
 
+class ezcMockFileExistsConstraint extends PHPUnit\Framework\Constraint\Constraint {
+    function toString() : string { return ""; }
+}
+
 /**
  * @package Template
  * @subpackage Tests
@@ -69,7 +73,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
     {
         $text = "abc def \nshow widget";
         $source = new ezcTemplateSourceCode( 'mock', 'mock', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         $items = array( array( 0, 1, 0,  20, 2, 11,  'TextBlock' ) );
 
@@ -90,7 +97,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
     {
         $text = "abc def \n{show widget";
         $source = new ezcTemplateSourceCode( 'mock', 'mock', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         $items = array( array( 0, 1, 0,  9, 2, 0,  'TextBlock' ) );
 
@@ -118,7 +128,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
         $text = file_get_contents( $this->templatePath . "comments_test.tpl" );
         // $text = "abc def \n{show /*inside comment*/widget\n$w // eol comment\n}";
         $source = new ezcTemplateSourceCode( 'mock', 'mock', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         if ( $parser->debug )
             echo "\ncomments_test.tpl\n";
@@ -162,7 +175,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
         $text = file_get_contents( $this->templatePath . "expression_types_test.tpl" );
         // echo "\nexpression_types_test.tpl\n";
         $source = new ezcTemplateSourceCode( 'mock', 'mock', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         if ( $parser->debug )
             echo "\nexpression_types_test.tpl\n";
@@ -242,7 +258,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
 
         $text = file_get_contents( $this->templatePath . "expression_array_types_test.tpl" );
         $source = new ezcTemplateSourceCode( 'mock', 'mock', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         if ( $parser->debug )
             echo "\nexpression_array_types_test.tpl\n";
@@ -319,7 +338,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
 
         $text = file_get_contents( $this->templatePath . "expression_variables_test.tpl" );
         $source = new ezcTemplateSourceCode( 'mock', 'mock', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         if ( $parser->debug )
             echo "\nexpression_variables_test.tpl\n";
@@ -362,7 +384,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
 
         $text = file_get_contents( $this->templatePath . "expression_test.tpl" );
         $source = new ezcTemplateSourceCode( 'mock', 'mock', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         if ( $parser->debug )
             echo "\nexpression_test.tpl\n";
@@ -464,7 +489,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
         $text = file_get_contents( $this->templatePath . "sub_expressions_test.tpl" );
         // echo "\nsub_expressions_test.tpl\n";
         $source = new ezcTemplateSourceCode( 'mock', 'mock', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         $items = array( array( 'Literal', 'value', 1 ),
                         array( 'PlusOperator' ),
@@ -519,7 +547,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
 
         $text = file_get_contents( $this->templatePath . "operators_test.tpl" );
         $source = new ezcTemplateSourceCode( 'mock', 'mock', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         $items = array( array( 'Literal', 'value', 'obj' ),
                         array( 'Variable', 'name', 'obj' ),
@@ -764,7 +795,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
 
         $text = file_get_contents( $this->templatePath . "literal_test.tpl" );
         $source = new ezcTemplateSourceCode( 'literal_test.tpl', 'mock:literal_test.tpl', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         if ( $parser->debug )
             echo "\nliteral_test.tpl\n";
@@ -793,7 +827,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
 
         $text = file_get_contents( $this->templatePath . "foreach_test.tpl" );
         $source = new ezcTemplateSourceCode( 'foreach_test.tpl', 'mock:foreach_test.tpl', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 //        $parser->debug = true;
 
         if ( $parser->debug )
@@ -820,7 +857,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
         foreach ( $texts as $i => $text )
         {
             $source = new ezcTemplateSourceCode( "while_test$i.tpl", "mock:while_test$i.tpl", $text );
-            $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+            $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                           ->setConstructorArgs([$source, $this->manager])
+                           ->onlyMethods(['reportElementCursor'])
+                           ->getMock();
 
             try
             {
@@ -854,7 +894,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
 
         $text = file_get_contents( $this->templatePath . "while_test.tpl" );
         $source = new ezcTemplateSourceCode( 'while_test.tpl', 'mock:while_test.tpl', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
         // $parser->debug = true;
 
         if ( $parser->debug )
@@ -883,7 +926,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
         {
             $ok = true;
             $source = new ezcTemplateSourceCode( "while_test$i.tpl", "mock:while_test$i.tpl", $text );
-            $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+            $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                           ->setConstructorArgs([$source, $this->manager])
+                           ->onlyMethods(['reportElementCursor'])
+                           ->getMock();
 
             try
             {
@@ -916,7 +962,10 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
 
         $text = file_get_contents( $this->templatePath . "if_test.tpl" );
         $source = new ezcTemplateSourceCode( 'if_test.tpl', 'mock:if_test.tpl', $text );
-        $parser = new MockElement_ezcTemplateParser( $source, $this->manager );
+        $parser = $this->getMockBuilder(ezcTemplateParser::class)
+                       ->setConstructorArgs([$source, $this->manager])
+                       ->onlyMethods(['reportElementCursor'])
+                       ->getMock();
 
         // $parser->debug = true;
 
