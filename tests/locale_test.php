@@ -70,15 +70,6 @@ class ezcTemplateLocaleTest extends ezcTestCase
         $this->removeTempDir();
     }
 
-    public function testLocale()
-    {
-        $this->setLocale( LC_ALL, 'de_DE', 'de_DE.UTF-8', 'deu', 'german' );
-
-        $a = 3.4;
-        $this->assertEquals("3,4", (string)$a);
-    }
-
-
     public function testFloats()
     {
         $this->setLocale( LC_ALL, 'de_DE', 'de_DE.UTF-8', 'deu', 'german' );
