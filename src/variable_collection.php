@@ -159,7 +159,8 @@ class ezcTemplateVariableCollection implements Iterator
      * Iterator rewind method
      * @return void
      */
-    public function rewind() 
+    #[\ReturnTypeWillChange]
+    public function rewind()
     {
         reset( $this->variables );
     }
@@ -168,7 +169,8 @@ class ezcTemplateVariableCollection implements Iterator
      * Returns the current variable
      * @return mixed
      */
-    public function current() 
+    #[\ReturnTypeWillChange]
+    public function current()
     {
         return current( $this->variables );
     }
@@ -177,7 +179,8 @@ class ezcTemplateVariableCollection implements Iterator
      * Returns the current key.
      * @return string
      */
-    public function key() 
+    #[\ReturnTypeWillChange]
+    public function key()
     {
         return key( $this->variables );
     }
@@ -186,7 +189,8 @@ class ezcTemplateVariableCollection implements Iterator
      * Proceed to the next element.
      * @return mixed
      */
-    public function next() 
+    #[\ReturnTypeWillChange]
+    public function next()
     {
         return next( $this->variables );
     }
@@ -195,7 +199,8 @@ class ezcTemplateVariableCollection implements Iterator
      * Returns true if the iterator is at a valid location.
      * @return bool
      */
-    public function valid() 
+    #[\ReturnTypeWillChange]
+    public function valid()
     {
         return ( $this->current() !== false );
     }
