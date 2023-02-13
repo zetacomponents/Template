@@ -8,9 +8,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -38,14 +38,14 @@ class ezcTemplateCursorTest extends ezcTestCase
          return new PHPUnit\Framework\TestSuite( "ezcTemplateCursorTest" );
     }
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $this->defaultCursor = new Invariant_ezcTemplateCursor( "a simple line\nsecond line" );
         $this->cursor = new Invariant_ezcTemplateCursor( "a simple line\nsecond line", 18, 2, 4 );
 
     }
 
-    protected function tearDown()
+    protected function tearDown() : void
     {
         unset( $this->cursor );
     }

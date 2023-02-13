@@ -8,9 +8,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -42,7 +42,7 @@ class ezcTemplateCacheTest extends ezcTestCase
         return new PHPUnit\Framework\TestSuite( __CLASS__ );
     }
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $this->basePath = realpath( dirname( __FILE__ ) ) . '/';
 
@@ -52,7 +52,7 @@ class ezcTemplateCacheTest extends ezcTestCase
         $config->templatePath = $this->basePath . 'templates/';
     }
 
-    protected function tearDown()
+    protected function tearDown() : void
     {
         $this->removeTempDir();
     }
@@ -97,15 +97,15 @@ class ezcTemplateCacheTest extends ezcTestCase
 
     // /////////////////////////////////////////////////////////////////////////////////////////
     // Cache blocks
-    
-    
+
+
     public function testCacheBlock()
     {
         $t = new ezcTemplate();
         $t->send->user = new TestUser( "Bernard", "Black" );
 
         $out = $t->process( "cache_block.tpl");
-        $this->assertEquals( 
+        $this->assertEquals(
 <<<EOM
 Before: [Bernard Black]
 
@@ -122,7 +122,7 @@ EOM
 
         $t->send->user = new TestUser( "Roger", "Rabbit" );
         $out = $t->process( "cache_block.tpl");
-        $this->assertEquals( 
+        $this->assertEquals(
 <<<EOM
 Before: [Roger Rabbit]
 
@@ -145,7 +145,7 @@ EOM
         $t->send->user = new TestUser( "Homer", "Simpson" );
 
         $out = $t->process( "cache_block_dynamic.tpl");
-        $this->assertEquals( 
+        $this->assertEquals(
 <<<EOM
 [Homer Simpson]
 
@@ -164,7 +164,7 @@ EOM
 
         $t->send->user = new TestUser( "Bart", "Simpson" );
         $out = $t->process( "cache_block_dynamic.tpl");
-        $this->assertEquals( 
+        $this->assertEquals(
 <<<EOM
 [Bart Simpson]
 
@@ -263,7 +263,7 @@ EOM
 , $out);
 
         $this->isInCacheBlock = false;
-        
+
         $t->send->user = new TestUser( "Bart", "Simpson", 2 );
         $out = $t->process( "cache_block_in_cache_block.tpl");
         $this->assertEquals( <<<EOM
@@ -276,7 +276,7 @@ Inner: Homer Simpson
 EOM
 , $out);
 
-    
+
         $t->send->user = new TestUser( "Lisa", "Simpson", 2); // It has the same key as the "Bart Simpson".
         $t->send->flushInner = true;
         $out = $t->process( "cache_block_in_cache_block.tpl");
@@ -372,7 +372,7 @@ EOM
         $t->send->user2 = new TestUser( "Bart", "Simpson" );
 
         $out = $t->process( "cache_block2.tpl");
-        $this->assertEquals( 
+        $this->assertEquals(
 <<<EOM
 [Homer Simpson][Bart Simpson]
 
@@ -393,7 +393,7 @@ EOM
         $out = $t->process( "cache_block2.tpl");
 
         // Keep the second, since the cache-key changed only for 'Homer' to 'Marge'.
-        $this->assertEquals( 
+        $this->assertEquals(
 <<<EOM
 [Marge Simpson][Bart Simpson]
 
@@ -417,7 +417,7 @@ EOM
         $t->send->username = "Bernard";
         $out = $t->process( "cache_block_ttl.tpl");
         $this->assertEquals( "[Bernard]\n--\n[Bernard]\n", $out );
- 
+
         $timer = time();
 
         while (time() - $timer < 2 )
@@ -442,7 +442,7 @@ EOM
 
 
         //echo "\n" . $t->configuration->compilePath . "\n";
-  
+
     public function testCacheBlockWithBeginText()
     {
         $t = new ezcTemplate( );
@@ -477,7 +477,7 @@ EOM
         {
             $out = $t->process( "cache_template_wrong_order.tpl");
             $this->fail("Expected an exception");
-        } 
+        }
         catch ( Exception $e)
         {
         }
@@ -492,7 +492,7 @@ EOM
         {
             $out = $t->process( "cache_template_in_block.tpl");
             $this->fail("Expected an exception");
-        } 
+        }
         catch ( Exception $e )
         {
             $this->assertNotEquals( false, strpos( $e->getMessage(), '{cache_template} cannot be declared inside a template block' ) );
@@ -507,7 +507,7 @@ EOM
         {
             $out = $t->process( "cache_template_after_dynamic.tpl");
             $this->fail("Expected an exception");
-        } 
+        }
         catch ( ezcTemplateParserException $e )
         {
             $this->assertNotEquals( false, strpos( $e->getMessage(), '{dynamic} can only be a child of {cache_template} or a {cache_block} block' ) );
@@ -522,7 +522,7 @@ EOM
         {
             $out = $t->process( "cache_template_after_dynamic_in_block.tpl");
             $this->fail("Expected an exception");
-        } 
+        }
         catch ( ezcTemplateParserException $e )
         {
             $this->assertNotEquals( false, strpos( $e->getMessage(), '{dynamic} can only be a child of {cache_template} or a {cache_block} block' ) );
@@ -537,7 +537,7 @@ EOM
         {
             $out = $t->process( "cache_dynamic_before_cache_block.tpl");
             $this->fail("Expected an exception");
-        } 
+        }
         catch ( ezcTemplateParserException $e )
         {
             $this->assertNotEquals( false, strpos( $e->getMessage(), '{dynamic} can only be a child of {cache_template} or a {cache_block} block' ) );
@@ -552,7 +552,7 @@ EOM
         {
             $out = $t->process( "cache_dynamic_after_cache_block.tpl");
             $this->fail("Expected an exception");
-        } 
+        }
         catch ( ezcTemplateParserException $e )
         {
             $this->assertNotEquals( false, strpos( $e->getMessage(), '{dynamic} can only be a child of {cache_template} or a {cache_block} block' ) );
@@ -567,7 +567,7 @@ EOM
         {
             $out = $t->process( "cache_dynamic_in_block_before_cache_block.tpl");
             $this->fail("Expected an exception");
-        } 
+        }
         catch ( ezcTemplateParserException $e )
         {
             $this->assertNotEquals( false, strpos( $e->getMessage(), '{dynamic} can only be a child of {cache_template} or a {cache_block} block' ) );
@@ -582,7 +582,7 @@ EOM
         {
             $out = $t->process( "cache_dynamic_in_block_after_cache_block.tpl");
             $this->fail("Expected an exception");
-        } 
+        }
         catch ( ezcTemplateParserException $e )
         {
             $this->assertNotEquals( false, strpos( $e->getMessage(), '{dynamic} can only be a child of {cache_template} or a {cache_block} block' ) );
@@ -597,7 +597,7 @@ EOM
         {
             $out = $t->process( "cache_dynamic_in_include_in_cache_block.tpl");
             $this->fail("Expected an exception");
-        } 
+        }
         catch ( ezcTemplateParserException $e )
         {
             $this->assertNotEquals( false, strpos( $e->getMessage(), '{dynamic} can only be a child of {cache_template} or a {cache_block} block' ) );
@@ -612,7 +612,7 @@ EOM
         {
             $out = $t->process( "cache_dynamic_in_include_after_cache_template.tpl");
             $this->fail("Expected an exception");
-        } 
+        }
         catch ( ezcTemplateParserException $e )
         {
             $this->assertNotEquals( false, strpos( $e->getMessage(), '{dynamic} can only be a child of {cache_template} or a {cache_block} block' ) );
@@ -658,7 +658,7 @@ EOM
     // - Test whether the all the dynamic block changes when the {use} variable changes.
     // - Test whether a new variable can be inserted in the dynamic block.
     // - Test whether the new variable can be updated an reused in the second dynamic block.
-    // - Test whether the new variable is static. 
+    // - Test whether the new variable is static.
     // - Test whether the static new variable can be used for dynamic calculations in the dynamic block.
     public function testDynamicBlockAdvanced()
     {
@@ -692,7 +692,7 @@ EOM
     public function testDynamicBlockVariableDeclaration()
     {
         $t = new ezcTemplate( );
-        $t->send->number = 22; 
+        $t->send->number = 22;
         $out = $t->process( "cache_dynamic_var_declare.tpl");
 
         $this->assertEquals( "\n[22]\n6\n", $out);
@@ -701,19 +701,19 @@ EOM
         $out = $t->process( "cache_dynamic_advanced.tpl");
 
         $this->assertEquals( "\n[2]\n[Guybrush Threepwood]\n[Nr 2]\n[Guybrush Threepwood]\n[Nr 3]\n[13]\n[Guybrush Threepwood]\n", $out );
-        
+
     }
 
     // Declare a variable under the first dynamic block.
     public function testDynamicBlockImplicitVariableDeclaration()
     {
         $t = new ezcTemplate();
-        $t->send->number = 22; 
+        $t->send->number = 22;
         $t->process( "cache_dynamic_implicit_declaration.tpl");
 
  //       $this->assertEquals( "\n22\n5\n6\n", $t->output );
 
-//        $t->send->number = 23; 
+//        $t->send->number = 23;
   //      $t->process( "cache_dynamic_implicit_declaration.tpl");
 
    //     $this->assertEquals( "\n23\n5\n6\n", $t->output );
@@ -777,7 +777,7 @@ EOM
         // Should call a function, if it's defined.
         $t = new ezcTemplate();
         $t->send->user = new TestUser("Bernard", "Black", 23);
-      
+
         $out = $t->process( "cache_key_object.tpl");
         $this->assertEquals( "\n[Bernard Black]\n", $out );
 
@@ -804,7 +804,7 @@ EOM
         $t->send->username = "Bernard";
         $out = $t->process( "cache_ttl.tpl");
         $this->assertEquals( "\n[Bernard]\n", $out );
- 
+
         // Rerun.
         $t->send->username = "Guybrush";
         $out = $t->process( "cache_ttl.tpl");
@@ -911,7 +911,7 @@ EOM
         $this->assertEquals( "Not one", $t->receive->numberStr);
         $this->assertEquals( "4", $t->receive->calc);
         $this->assertEquals( "I am rubber, you are glue.", $t->receive->quote);
-        
+
         $t->receive->quote = null;
         $t->receive->calc = null;
         $t->receive->numberStr = null;
@@ -928,7 +928,7 @@ EOM
         $t->receive->calc = null;
         $t->receive->numberStr = null;
 
-        // Partly cached, partly dynamic. 
+        // Partly cached, partly dynamic.
         $t->send->number = 1;
         $t->process( "cache_dynamic_return2.tpl");
         $this->assertEquals( "\n[2]\n\n", $t->output); // Cached.
@@ -943,9 +943,9 @@ EOM
         $t->send->a = 2;
         $t->send->b = 10;
         $t->process( "cache_include.tpl");
-        
+
         $this->assertEquals( "\n\n[2]\n[10]\n\n<2>\n<10>\n<Hello>\n<World>\n[Included template]\n\n[42]\n[12]\n", $t->output);
-        
+
         $t->send->a = 3;
         $t->send->b = 11;
         $t->process( "cache_include.tpl");
@@ -969,7 +969,7 @@ EOM
         $t->process( "cache_dynamic_include.tpl");
         $this->assertEquals( "\n\n[2]\n[10]\n\n<3>\n<11>\n<Hello>\n<World>\n[Included template]\n[42]\n[13]\n\n[42]\n[12]\n", $t->output );
 
-        
+
         // $this->assertEquals( "\n[2]\n\n\n", $t->output);
         // $this->assertEquals( "Not one", $t->receive->numberStr);
         // $this->assertEquals( "4", $t->receive->calc);
@@ -1003,7 +1003,7 @@ EOM
         $t = new ezcTemplate();
         $t->send->user = new TestUser( "Bernard", "Black" );
         $out = $t->process( "cache_block.tpl");
-        $this->assertEquals( 
+        $this->assertEquals(
 <<<EOM
 Before: [Bernard Black]
 
@@ -1022,7 +1022,7 @@ EOM
         $t->configuration->disableCache = true;
         $t->send->user = new TestUser( "Roger", "Rabbit" );
         $out = $t->process( "cache_block.tpl");
-        $this->assertEquals( 
+        $this->assertEquals(
 <<<EOM
 Before: [Roger Rabbit]
 
@@ -1039,7 +1039,7 @@ EOM
 
         $t->send->user = new TestUser( "Bernard", "Black" );
         $out = $t->process( "cache_block.tpl");
-        $this->assertEquals( 
+        $this->assertEquals(
 <<<EOM
 Before: [Bernard Black]
 
@@ -1055,7 +1055,7 @@ EOM
 , $out);
     }
 
-  
+
 
 }
 

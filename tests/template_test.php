@@ -8,9 +8,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -43,7 +43,7 @@ class ezcTemplateTest extends ezcTestCase
      * This is prepended to all created path values to ensure tests where
      * they are installed.
      */
-    protected function setUp()
+    protected function setUp() : void
     {
         /*
         $this->basePath = realpath( dirname( __FILE__ ) ) . '/';
@@ -69,7 +69,7 @@ class ezcTemplateTest extends ezcTestCase
         ezcTemplateConfiguration::setInstance( $config2, 'templates' );
     }
 
-    protected function tearDown()
+    protected function tearDown() : void
     {
         $tc = ezcTemplateConfiguration::getInstance();
         $tc->executeTemplate = true;
@@ -96,7 +96,7 @@ class ezcTemplateTest extends ezcTestCase
         $template = new ezcTemplate();
         $res = $template->process( "reexecute_template.ezt" );
 
-        // Change the template, and set the time back. 
+        // Change the template, and set the time back.
         file_put_contents( $this->templatePath . "/reexecute_template.ezt", "Goodbye cruel world" );
         $new_date = 1114300800; // +- 24 April 2005.
         touch( $this->templatePath . "/reexecute_template.ezt", $new_date );
@@ -171,7 +171,7 @@ class ezcTemplateTest extends ezcTestCase
         {
             $template->process("");
             $this->fail( "Expected an ezcTemplateFileNotFoundException");
-        } 
+        }
         catch (ezcTemplateFileNotFoundException $e )
         {
         }
@@ -306,7 +306,7 @@ class ezcTemplateTest extends ezcTestCase
 
         $conf->templatePath = "/this/is/wrong";
         self::assertEquals( "Hello world2",  $template->process( $absPath  . DIRECTORY_SEPARATOR . "test2.ezt", $conf ) );
-        
+
         try
         {
             self::assertEquals( "Hello world2",  $template->process( "test2.ezt", $conf ) );
@@ -333,7 +333,7 @@ class ezcTemplateTest extends ezcTestCase
 
         $conf->templatePath = "C:\\this\\is\\wrong";
         self::assertEquals( "Hello world2",  $template->process( $absPath  . DIRECTORY_SEPARATOR . "test2.ezt", $conf ) );
-        
+
         try
         {
             self::assertEquals( "Hello world2",  $template->process( "test2.ezt", $conf ) );

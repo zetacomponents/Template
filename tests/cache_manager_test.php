@@ -8,9 +8,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -43,7 +43,7 @@ class ezcTemplateCacheManagerTest extends ezcTestCase
         return new PHPUnit\Framework\TestSuite( __CLASS__ );
     }
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $tables = array( 'user', 'cache_templates', 'cache_values' );
 
@@ -89,7 +89,7 @@ class ezcTemplateCacheManagerTest extends ezcTestCase
            ->set( $db->quoteIdentifier( 'nickname' ), $iq->bindValue( 'sunRay' ) )
            ->prepare();
         $s->execute();
-       
+
         $iq = $db->createInsertQuery();
         $s = $iq->insertInto( $db->quoteIdentifier( 'user' ) )
            ->set( $db->quoteIdentifier( 'id' ), 2 )
@@ -97,7 +97,7 @@ class ezcTemplateCacheManagerTest extends ezcTestCase
            ->set( $db->quoteIdentifier( 'nickname' ), $iq->bindValue( 'Tiger' ) )
            ->prepare();
         $s->execute();
-       
+
         $iq = $db->createInsertQuery();
         $s = $iq->insertInto( $db->quoteIdentifier( 'user' ) )
            ->set( $db->quoteIdentifier( 'id' ), 3 )
@@ -107,10 +107,10 @@ class ezcTemplateCacheManagerTest extends ezcTestCase
         $s->execute();
     }
 
-    protected function tearDown()
+    protected function tearDown() : void
     {
         // Remove tables.
-        $db = ezcDbInstance::get(); 
+        $db = ezcDbInstance::get();
 //        $db->exec( 'DROP TABLE cache_templates' );
 //        $db->exec( 'DROP TABLE cache_values' );
 //        $db->exec( 'DROP TABLE user' );
@@ -151,8 +151,8 @@ class ezcTemplateCacheManagerTest extends ezcTestCase
         $r = $t->process("show_users.ezt");
         $this->assertEquals( "\n\n\n\n1 Raymond sunRay\n\n2 Derick Tiger\n\n3 Jan Amos\n", $r );
 
-        // Update a single user. 
-        $db = ezcDbInstance::get(); 
+        // Update a single user.
+        $db = ezcDbInstance::get();
         $db->exec( 'UPDATE user SET nickname="bla" WHERE id=1' );
 
         // Still cached.
@@ -175,14 +175,14 @@ class ezcTemplateCacheManagerTest extends ezcTestCase
         $r = $t->process("cached_page_includes_show_users.ezt");
         $this->assertEquals( "\nCached:\n\n\n\n\n1 Raymond sunRay\n\n2 Derick Tiger\n\n3 Jan Amos\n", $r );
 
-        $db = ezcDbInstance::get(); 
+        $db = ezcDbInstance::get();
         $db->exec( 'UPDATE user SET nickname="bla" WHERE id=1' );
         ezcTemplateConfiguration::getInstance()->cacheManager->update("user", 1 );
 
         $r = $t->process("cached_page_includes_show_users.ezt");
         $this->assertEquals( "\nCached:\n\n\n\n\n1 Raymond bla\n\n2 Derick Tiger\n\n3 Jan Amos\n", $r );
     }
- 
+
 
     public function testCleanExpired()
     {
@@ -192,7 +192,7 @@ class ezcTemplateCacheManagerTest extends ezcTestCase
         $r = $t->process("cached_page_includes_show_users.ezt");
         $this->assertEquals( "\nCached:\n\n\n\n\n1 Raymond sunRay\n\n2 Derick Tiger\n\n3 Jan Amos\n", $r );
 
-        $db = ezcDbInstance::get(); 
+        $db = ezcDbInstance::get();
         $db->exec( 'UPDATE user SET nickname="bla" WHERE id=1' );
         ezcTemplateConfiguration::getInstance()->cacheManager->update("user", 1 );
 
@@ -207,7 +207,7 @@ class ezcTemplateCacheManagerTest extends ezcTestCase
         $r = $t->process("cached_page_includes_show_users.ezt");
         $this->assertEquals( "\nCached:\n\n\n\n\n1 Raymond sunRay\n\n2 Derick Tiger\n\n3 Jan Amos\n", $r );
     }
- 
+
     public function testCacheBlock()
     {
         $t = new ezcTemplate();
@@ -216,8 +216,8 @@ class ezcTemplateCacheManagerTest extends ezcTestCase
         $r = $t->process("show_users_cache_block.ezt");
         $this->assertEquals( "\n\n\n\n1 Raymond sunRay\n\n2 Derick Tiger\n\n3 Jan Amos\n", $r );
 
-        // Update a single user. 
-        $db = ezcDbInstance::get(); 
+        // Update a single user.
+        $db = ezcDbInstance::get();
         $db->exec( 'UPDATE user SET nickname="bla" WHERE id=1' );
 
         // Still cached.
@@ -243,7 +243,7 @@ class ezcTemplateCacheManagerTest extends ezcTestCase
 
         $this->assertEquals( "\n\n\n1\naaa\n", $r );
 
-        // Update a single user. 
+        // Update a single user.
         $t->send->id = 1;
         $t->send->name = "bla";
 

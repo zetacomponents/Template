@@ -8,9 +8,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -36,7 +36,7 @@ class ezcTemplateLocaleTest extends ezcTestCase
          return new PHPUnit\Framework\TestSuite( __CLASS__ );
     }
 
-    protected function setUp()
+    protected function setUp() : void
     {
 
         try
@@ -61,7 +61,7 @@ class ezcTemplateLocaleTest extends ezcTestCase
         $config->context = new ezcTemplateNoContext;
     }
 
-    protected function tearDown()
+    protected function tearDown() : void
     {
         $this->removeTempDir();
     }
@@ -81,7 +81,7 @@ class ezcTemplateLocaleTest extends ezcTestCase
 
         $template = new ezcTemplate();
         $file =  "float.ezt";
-        
+
         // The number 3.14 should not be translated to 3,14. The array size should be one, not two.
         file_put_contents( $this->templatePath . "/". $file, "{array_count(array(3.14))}" );
         $this->assertEquals(1, $template->process( $file ), "Number 3.14 is internally translated to 3,14 when the de_DE locale is used.");
