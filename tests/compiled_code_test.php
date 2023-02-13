@@ -31,6 +31,11 @@
  */
 class ezcTemplateCompiledCodeTest extends ezcTestCase
 {
+    private string $basePath;
+    private string $templatePath;
+    private string $templateCompiledPath;
+    private string $templateStorePath;
+
     public static function suite()
     {
          return new PHPUnit\Framework\TestSuite( "ezcTemplateCompiledCodeTest" );

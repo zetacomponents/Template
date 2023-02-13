@@ -36,6 +36,7 @@ class ezcTemplateCacheTest extends ezcTestCase
     private $tempDir;
     private $basePath;
     private $templatePath;
+    private bool $isInCacheBlock;
 
     public static function suite()
     {

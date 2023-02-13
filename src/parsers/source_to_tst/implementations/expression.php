@@ -55,11 +55,36 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
      */
     public $rootOperator;
 
-
     /**
      * @var bool
      */
     public $foundArrayAppend = false;
+
+    /**
+     * @var bool
+     */
+    public $minPrecedence;
+
+    /**
+     * @var ezcTemplateCursor
+     */
+    public $expressionStartCursor;
+
+    /**
+     * @var bool
+     */
+    public $allowEmptyExpressions;
+
+    /**
+     * @var bool
+     */
+    public $allowIdentifier;
+
+    /**
+     * @var array
+     */
+    public $children;
+
 
     /**
      * Passes control to parent.

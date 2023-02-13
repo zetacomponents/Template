@@ -47,7 +47,7 @@ class ezcTemplateLiteralArrayAstNode extends ezcTemplateAstNode
      *
      * @var array(ezcTemplateAstNode)
      */
-    public $key = array();
+    public $keys = array();
 
 
     /**

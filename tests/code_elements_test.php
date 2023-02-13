@@ -31,11 +31,11 @@
  */
 class ezcTemplateCodeElementsTest extends ezcTestCase
 {
-	private $assignmentOperators;
-	private $unaryOperators;
-	private $unaryPrePostOperators;
-	private $logicalOperators;
-	private $binaryOperators;
+    private $assignmentOperators;
+    private $unaryOperators;
+    private $unaryPrePostOperators;
+    private $logicalOperators;
+    private $binaryOperators;
 
     public static function suite()
     {

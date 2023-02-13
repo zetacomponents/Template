@@ -31,6 +31,10 @@
  */
 class ezcTemplateLocaleTest extends ezcTestCase
 {
+    private string $basePath;
+    private string $templatePath;
+    private string $compilePath;
+
     public static function suite()
     {
          return new PHPUnit\Framework\TestSuite( __CLASS__ );

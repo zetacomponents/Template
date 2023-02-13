@@ -45,6 +45,16 @@ class ezcTemplateVariableSourceToTstParser extends ezcTemplateSourceToTstParser
     public $variableName;
 
     /**
+     * The variable value node
+     */
+    public ?ezcTemplateTstNode $variable;
+
+    /**
+     * The variable node
+     */
+    public ?ezcTemplateVariableTstNode $element;
+
+    /**
      * Passes control to parent.
      *
      * @param ezcTemplateParser $parser

@@ -64,6 +64,14 @@ class ezcTemplateSourceToTstParserException extends ezcTemplateException
      */
     public $errorDetails;
 
+
+    /**
+     * The parser for which this exception was thrown
+     *
+     * @var ezcTemplateSourceToTstParser
+     */
+    public $parser;
+
     /**
      * Initialises the exception with the failing elements, parser, source code
      * and error messages.

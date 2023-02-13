@@ -32,6 +32,9 @@
  */
 class ezcTemplateIncludeSourceToTstParser extends ezcTemplateSourceToTstParser
 {
+    private ?ezcTemplateTstNode $value;
+    private $element;
+
     /**
      * Passes control to parent.
      *

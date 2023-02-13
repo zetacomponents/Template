@@ -161,6 +161,11 @@ abstract class ezcTemplateSourceToTstParser
     protected $operationState;
 
     /**
+     * The block that is currently being worked on.
+     */
+    protected ?ezcTemplateTstNode $block;
+
+    /**
      * Initialise the parser with the main parser object and the parent parser
      * (if any).
      *

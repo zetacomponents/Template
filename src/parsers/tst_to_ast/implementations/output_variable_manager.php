@@ -35,6 +35,7 @@ class ezcTemplateOutputVariableManager
 {
     private $outputVariables = array();
     private $stackSize = 0;
+    private ezcTemplateLiteralAstNode $initialValue;
 
     public function __construct( $initialValue = null )
     {

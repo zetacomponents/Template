@@ -40,6 +40,15 @@
  */
 class ezcTemplateFunctionCallSourceToTstParser extends ezcTemplateSourceToTstParser
 {
+    /**
+     * Whether a parameter is currently being read
+     */
+    private bool $readingParameter;
+
+    /**
+     * How many parameters there are to a function
+     */
+    private int  $parameterCount;
 
     /**
      * The function call object if the parser was succesful.

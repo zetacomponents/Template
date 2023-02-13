@@ -31,6 +31,8 @@
  */
 class ezcTemplateOperatorTest extends ezcTestCase
 {
+    private array $operators;
+
     public static function suite()
     {
          return new PHPUnit\Framework\TestSuite( "ezcTemplateOperatorTest" );

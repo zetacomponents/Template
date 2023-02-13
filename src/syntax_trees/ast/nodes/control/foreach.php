@@ -56,6 +56,7 @@ class ezcTemplateForeachAstNode extends ezcTemplateStatementAstNode
      * The body element for the foreach control structure.
      * @var ezcTemplateBodyAstNode
      */
+    public $body;
 
     /**
      * Initialize with function name code and optional arguments

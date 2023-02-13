@@ -113,15 +113,40 @@
 class ezcTemplateWhitespaceRemoval
 {
     /**
+     * Remove trailing whitespace after last block
+     */
+    private $trimTrailing;
+
+    /**
+     * Remove leading whitespace before first block
+     */
+    private $trimLeading;
+
+    /**
+     * Remove whitespace found on the same line as the end of the block definition
+     */
+    private $trimBlockEol;
+
+    /**
+     * Remove indentation whitespace until the minimum column of the current column is reached
+     */
+    private $trimIndent;
+
+    /**
+     * Size of vertical tabs
+     */
+    public $tabSize;
+
+    /**
      *
      */
     public function __construct()
     {
-        $this->trimTrailing = true; // Remove trailing whitespace after last block
-        $this->trimLeading = true; // Remove leading whitespace before first block
-        $this->trimBlockEol = true; // Remove whitespace found on the same line as the end of the block definition
-        $this->trimIndent   = true; // Remove indentation whitespace until the minimum column of the current column is reached
-        $this->tabSize = 8;         // Size of vertical tabs
+        $this->trimTrailing = true;
+        $this->trimLeading = true;
+        $this->trimBlockEol = true;
+        $this->trimIndent   = true;
+        $this->tabSize = 8;
     }
 
     /**

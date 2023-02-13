@@ -37,13 +37,6 @@
 class ezcTemplateLiteralBlockSourceToTstParser extends ezcTemplateSourceToTstParser
 {
     /**
-     * The block element object which is the result of the parse operation.
-     *
-     * @var ezcTemplateLiteralBlockTstNode
-     */
-    public $block;
-
-    /**
      * Passes control to parent.
      *
      * @param ezcTemplateParser $parser

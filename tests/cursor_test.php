@@ -33,6 +33,9 @@ require_once "invariant_parse_cursor.php";
  */
 class ezcTemplateCursorTest extends ezcTestCase
 {
+    private $defaultCursor;
+    private $cursor;
+
     public static function suite()
     {
          return new PHPUnit\Framework\TestSuite( "ezcTemplateCursorTest" );

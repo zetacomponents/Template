@@ -133,6 +133,9 @@ class ezcTemplateTstToAstTransformer implements ezcTemplateTstNodeVisitor
      */
     protected $declaredVariables = array();
 
+    private bool $isCycle;
+    private $previousType;
+
     /**
      * Initialize the transformer, after this send this object to the accept() method on a node.
      *
