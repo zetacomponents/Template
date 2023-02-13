@@ -45,10 +45,10 @@
         "zetacomponents/base": "~1.8"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0",
+        "phpunit/phpunit": "^9.0",
         "zetacomponents/database": "*",
         "zetacomponents/template-translation-tiein": "*",
         "zetacomponents/translation": "*",
-        "zetacomponents/unit-test": "*"
+        "zetacomponents/unit-test": "^1.2"
     }
 }
