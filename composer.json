@@ -49,6 +49,7 @@
         "zetacomponents/database": "*",
         "zetacomponents/template-translation-tiein": "*",
         "zetacomponents/translation": "*",
-        "zetacomponents/unit-test": "^1.2"
+        "zetacomponents/unit-test": "^1.2",
+        "squizlabs/php_codesniffer": "3.*"
     }
 }
