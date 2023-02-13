@@ -45,7 +45,7 @@
 0043:[{$obj->prop1 = $objval1}{$obj->subprop->prop2 = $objval2}{$obj->prop1 %= $obj->subprop->prop2 += 5}{str_number( $obj->prop1, 5, ',', '' )},{str_number( $obj->subprop->prop2, 5, ',', '' )}]
 0044:[{$obj->prop1 = $objval1}{$obj->subprop->prop2 = $objval2}{$obj->prop1 %= $obj->subprop->prop2 -= 5}{str_number( $obj->prop1, 5, ',', '' )},{str_number( $obj->subprop->prop2, 5, ',', '' )}]
 0045:[{$obj->prop1 = $objval1}{$obj->subprop->prop2 = $objval2}{$obj->prop1 %= $obj->subprop->prop2 *= 5}{str_number( $obj->prop1, 5, ',', '' )},{str_number( $obj->subprop->prop2, 5, ',', '' )}]
-0046:[{$obj->prop1 = $objval1}{$obj->subprop->prop2 = $objval2}{$obj->prop1 %= $obj->subprop->prop2 /= 5}{str_number( $obj->prop1, 5, ',', '' )},{str_number( $obj->subprop->prop2, 5, ',', '' )}]
+0046:[{$obj->prop1 = $objval1}{$obj->subprop->prop2 = 500}{$obj->prop1 %= $obj->subprop->prop2 /= 5}{str_number( $obj->prop1, 5, ',', '' )},{str_number( $obj->subprop->prop2, 5, ',', '' )}]
 0047:[{$obj->prop1 = $objval1}{$obj->subprop->prop2 = $objval2}{$obj->prop1 %= $obj->subprop->prop2 %= 5}{str_number( $obj->prop1, 5, ',', '' )},{str_number( $obj->subprop->prop2, 5, ',', '' )}]
 0048:[{$obj->prop1 = $objval1}{$obj->subprop->prop2 = $objval2}{$obj->prop1 %= $obj->subprop->prop2 .= 5}{str_number( $obj->prop1, 5, ',', '' )},{str_number( $obj->subprop->prop2, 5, ',', '' )}]
 0049:[{$obj->prop1 = $objval1}{$obj->subprop->prop2 = $objval2}{$obj->prop1 .= 5}{str_number( $obj->prop1, 5, ',', '' )},{str_number( $obj->subprop->prop2, 5, ',', '' )}]

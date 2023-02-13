@@ -44,7 +44,7 @@
 0043:[{$bar = 101}{$bar2 = 201}{$bar %= $bar2 += 5}{str_number( $bar, 5, ',', '' )},{str_number( $bar2, 5, ',', '' )}]
 0044:[{$bar = 101}{$bar2 = 201}{$bar %= $bar2 -= 5}{str_number( $bar, 5, ',', '' )},{str_number( $bar2, 5, ',', '' )}]
 0045:[{$bar = 101}{$bar2 = 201}{$bar %= $bar2 *= 5}{str_number( $bar, 5, ',', '' )},{str_number( $bar2, 5, ',', '' )}]
-0046:[{$bar = 101}{$bar2 = 201}{$bar %= $bar2 /= 5}{str_number( $bar, 5, ',', '' )},{str_number( $bar2, 5, ',', '' )}]
+0046:[{$bar = 101}{$bar2 = 200}{$bar %= $bar2 /= 5}{str_number( $bar, 5, ',', '' )},{str_number( $bar2, 5, ',', '' )}]
 0047:[{$bar = 101}{$bar2 = 201}{$bar %= $bar2 %= 5}{str_number( $bar, 5, ',', '' )},{str_number( $bar2, 5, ',', '' )}]
 0048:[{$bar = 101}{$bar2 = 201}{$bar %= $bar2 .= 5}{str_number( $bar, 5, ',', '' )},{str_number( $bar2, 5, ',', '' )}]
 0049:[{$bar = 101}{$bar2 = 201}{$bar .= 5}{str_number( $bar, 5, ',', '' )},{str_number( $bar2, 5, ',', '' )}]

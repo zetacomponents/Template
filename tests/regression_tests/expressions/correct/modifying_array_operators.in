@@ -45,7 +45,7 @@
 0043:[{$arr = $arr_}{$arr2 = $arr2_}{$arr['foo'] %= $arr2['foo']['bar'] += 5}{str_number( $arr['foo'], 5, ',', '' )},{str_number( $arr2['foo']['bar'], 5, ',', '' )}]
 0044:[{$arr = $arr_}{$arr2 = $arr2_}{$arr['foo'] %= $arr2['foo']['bar'] -= 5}{str_number( $arr['foo'], 5, ',', '' )},{str_number( $arr2['foo']['bar'], 5, ',', '' )}]
 0045:[{$arr = $arr_}{$arr2 = $arr2_}{$arr['foo'] %= $arr2['foo']['bar'] *= 5}{str_number( $arr['foo'], 5, ',', '' )},{str_number( $arr2['foo']['bar'], 5, ',', '' )}]
-0046:[{$arr = $arr_}{$arr2 = $arr2_}{$arr['foo'] %= $arr2['foo']['bar'] /= 5}{str_number( $arr['foo'], 5, ',', '' )},{str_number( $arr2['foo']['bar'], 5, ',', '' )}]
+0046:[{$arr = $arr_}{$arr2 = $arr2_}{$arr2['foo']['bar'] = 100}{$arr['foo'] %= $arr2['foo']['bar'] /= 5}{str_number( $arr['foo'], 5, ',', '' )},{str_number( $arr2['foo']['bar'], 5, ',', '' )}]
 0047:[{$arr = $arr_}{$arr2 = $arr2_}{$arr['foo'] %= $arr2['foo']['bar'] %= 5}{str_number( $arr['foo'], 5, ',', '' )},{str_number( $arr2['foo']['bar'], 5, ',', '' )}]
 0048:[{$arr = $arr_}{$arr2 = $arr2_}{$arr['foo'] %= $arr2['foo']['bar'] .= 5}{str_number( $arr['foo'], 5, ',', '' )},{str_number( $arr2['foo']['bar'], 5, ',', '' )}]
 0049:[{$arr = $arr_}{$arr2 = $arr2_}{$arr['foo'] .= 5}{str_number( $arr['foo'], 5, ',', '' )},{str_number( $arr2['foo']['bar'], 5, ',', '' )}]

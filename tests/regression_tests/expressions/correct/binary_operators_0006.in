@@ -1,4 +1,4 @@
-{var $foo = 42, $bar = 101, $bar2 = 201, $arr = array( 'foo' => 401 )}
+{var $foo = 40, $bar = 101, $bar2 = 201, $arr = array( 'foo' => 401 )}
 0161:[{str_number( ( $foo / 5 ) + 5 , 2, ',', '' )}]
 0162:[{str_number( ( $foo / 5 ) + -$foo , 2, ',', '' )}]
 0163:[{str_number( ( $foo / 5 ) - 5 , 2, ',', '' )}]
