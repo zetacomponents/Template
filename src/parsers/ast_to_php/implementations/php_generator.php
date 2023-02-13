@@ -195,7 +195,7 @@ class ezcTemplateAstToPhpGenerator implements ezcTemplateAstNodeVisitor
      */
     protected function write( $text, $pre = null, $post = null )
     {
-        $lines = preg_split( "#(\r\n|\r|\n)#", $text, -1, PREG_SPLIT_DELIM_CAPTURE );
+        $lines = preg_split( "#(\r\n|\r|\n)#", $text ?? '', -1, PREG_SPLIT_DELIM_CAPTURE );
         $count = count( $lines );
         for ( $i = 0; $i < $count; $i += 2 )
         {
