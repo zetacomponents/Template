@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -142,7 +142,7 @@ class ezcTemplateVariableCollection implements Iterator
      */
     public function __isset( $name )
     {
-        return array_key_exists( $name, $this->variables ) && isset( $this->variables[$name] ); 
+        return array_key_exists( $name, $this->variables ) && isset( $this->variables[$name] );
     }
 
     /**
@@ -163,7 +163,7 @@ class ezcTemplateVariableCollection implements Iterator
     {
         reset( $this->variables );
     }
- 
+
     /**
      * Returns the current variable
      * @return mixed
@@ -181,7 +181,7 @@ class ezcTemplateVariableCollection implements Iterator
     {
         return key( $this->variables );
     }
- 
+
     /**
      * Proceed to the next element.
      * @return mixed
@@ -201,7 +201,7 @@ class ezcTemplateVariableCollection implements Iterator
     }
 
     /**
-     * Removes the variable named $name from the collection. 
+     * Removes the variable named $name from the collection.
      *
      * If the variable doesn't exist, it returns false.
      *

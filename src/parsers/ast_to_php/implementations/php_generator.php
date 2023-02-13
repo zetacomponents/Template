@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -87,15 +87,15 @@ class ezcTemplateAstToPhpGenerator implements ezcTemplateAstNodeVisitor
 
 
     /**
-     * Escape the single quote in the output. Useful for the caching. 
+     * Escape the single quote in the output. Useful for the caching.
      * @var bool
      */
     private $escapeSingleQuote = false;
 
 
     /**
-     * The character set defined in the template. 
-     * If set to false, it uses the $sourceCharset. 
+     * The character set defined in the template.
+     * If set to false, it uses the $sourceCharset.
      * @var string|bool
      */
     private $charsetInTemplate = false;
@@ -351,7 +351,7 @@ class ezcTemplateAstToPhpGenerator implements ezcTemplateAstNodeVisitor
                               "\\r",
                               "\\n" );
 
-            if ( $this->escapeSingleQuote ) 
+            if ( $this->escapeSingleQuote )
             {
                 $search[] = "'";
                 $replace[] = "\\'";
@@ -478,7 +478,7 @@ class ezcTemplateAstToPhpGenerator implements ezcTemplateAstNodeVisitor
     public function visitBlockCommentAstNode( ezcTemplateBlockCommentAstNode $comment )
     {
         // Comment output.
-        
+
         // if ( $comment->hasSeparator )
         // {
         //     $startMarker = '/* ';
@@ -634,7 +634,7 @@ class ezcTemplateAstToPhpGenerator implements ezcTemplateAstNodeVisitor
 
         if ( $operator instanceof ezcTemplateReferenceOperatorAstNode )
         {
-            // No spaces around the '->'.  PHP cannot handle: $myObj -> class 
+            // No spaces around the '->'.  PHP cannot handle: $myObj -> class
             $this->write( $operator->getOperatorPHPSymbol() );
         }
         else
@@ -758,7 +758,7 @@ class ezcTemplateAstToPhpGenerator implements ezcTemplateAstNodeVisitor
     }
 
     /**
-     * Pretends to write the dynamic block. The only thing it does is calling 
+     * Pretends to write the dynamic block. The only thing it does is calling
      * the children with the escapeSingleQuote switched on.
      *
      * @param ezcTemplateDynamicBlockAstNode $statement
@@ -773,7 +773,7 @@ class ezcTemplateAstToPhpGenerator implements ezcTemplateAstNodeVisitor
 
         $this->escapeSingleQuote = false;
     }
- 
+
 
     /**
      * Visits a code element containing while control structures.
@@ -1081,7 +1081,7 @@ class ezcTemplateAstToPhpGenerator implements ezcTemplateAstNodeVisitor
     }
 
     /**
-     * Writes curly braces. 
+     * Writes curly braces.
      *
      * @param ezcTemplateCurlyBracesAstNode $curly
      * @return void

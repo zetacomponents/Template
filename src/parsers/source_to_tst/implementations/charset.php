@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -34,7 +34,7 @@ class ezcTemplateCharsetSourceToTstParser extends ezcTemplateSourceToTstParser
 {
     /**
      * Passes control to parent.
-     * 
+     *
      * @param ezcTemplateParser $parser
      * @param ezcTemplateSourceToTstParser $parentParser
      * @param ezcTemplateCursor $startCursor
@@ -65,7 +65,7 @@ class ezcTemplateCharsetSourceToTstParser extends ezcTemplateSourceToTstParser
             $charset->name = $this->lastParser->value;
 
             $this->findNextElement();
-            if ( !$cursor->match( "}" ) ) 
+            if ( !$cursor->match( "}" ) )
             {
                 throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_CURLY_BRACKET_CLOSE );
             }
@@ -76,7 +76,7 @@ class ezcTemplateCharsetSourceToTstParser extends ezcTemplateSourceToTstParser
 
         return false;
     }
-                
+
         /*
                 if ( !$this->parseOptionalType( "Variable", null, false) )
                 {

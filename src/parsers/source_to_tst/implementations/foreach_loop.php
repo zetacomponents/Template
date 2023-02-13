@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -127,7 +127,7 @@ class ezcTemplateForeachLoopSourceToTstParser extends ezcTemplateSourceToTstPars
 
             $el->itemVariableName = $this->lastParser->variableName;
         }
-        
+
         // Value lookup in the symbol table.
         if ( !$this->parser->symbolTable->enter( $el->itemVariableName, ezcTemplateSymbolTable::VARIABLE, true ) )
         {
@@ -145,7 +145,7 @@ class ezcTemplateForeachLoopSourceToTstParser extends ezcTemplateSourceToTstPars
                 if ( !$this->parseOptionalType( 'Variable', null, false ) )
                 {
                     throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_VARIABLE );
-                } 
+                }
 
                 if ( $matchIncrement )
                 {
@@ -160,7 +160,7 @@ class ezcTemplateForeachLoopSourceToTstParser extends ezcTemplateSourceToTstPars
             }
             while ( $cursor->match( "," ) );
         }
- 
+
         // Check the offset.
         if ( $cursor->match ( 'offset' ) )
         {
@@ -179,7 +179,7 @@ class ezcTemplateForeachLoopSourceToTstParser extends ezcTemplateSourceToTstPars
             $el->offset = $this->lastParser->rootOperator;
             $this->findNextElement();
         }
- 
+
         // check for 'limit'.
         if ( $cursor->match ( 'limit' ) )
         {
@@ -199,11 +199,11 @@ class ezcTemplateForeachLoopSourceToTstParser extends ezcTemplateSourceToTstPars
             $el->limit = $this->lastParser->rootOperator;
             $this->findNextElement();
         }
- 
+
 
         if ( !$this->parentParser->atEnd( $cursor, null, false ) )
         {
-            throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, 
+            throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor,
                 $canBeArrow ?  ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_ARROW_OR_CLOSE_CURLY_BRACKET :
                                ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_CURLY_BRACKET_CLOSE  );
         }

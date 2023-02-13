@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -28,10 +28,10 @@
  * The main class for processing templates.
  *
  * The ezcTemplate class compiles a source template (*.ezt) to PHP code,
- * executes the PHP code, and returns the output. The generated PHP code 
+ * executes the PHP code, and returns the output. The generated PHP code
  * will be stored on disk as a compiled template.
- * 
- * If a compiled template already exists of the to process template, the 
+ *
+ * If a compiled template already exists of the to process template, the
  * ezcTemplate class executes directly the compiled template; thus omitting
  * the compile step.
  *
@@ -42,7 +42,7 @@
  * echo $t->process( "page.ezt" );
  * </code>
  *
- * The location for the source templates and compiled templates among other things 
+ * The location for the source templates and compiled templates among other things
  * are specified in the ezcTemplateConfiguration configuration object. A default
  * configuration is always present and can be accessed via the $configuration
  * property.
@@ -74,7 +74,7 @@
  * are sent to and retrieved from the template.
  *
  * The next example demonstrates how a template variable is set and retrieved:
- * 
+ *
  * <code>
  * $t = new ezcTemplate();
  *
@@ -83,15 +83,15 @@
  *
  * $number = $t->receive->length;
  * </code>
- * 
+ *
  * The template code:
  * <code>
  * {use $mySentence = ""}
- * 
+ *
  * {var $length = str_len( $mySentence )}
  * {return $length}
  * </code>
- * 
+ *
  * @property ezcTemplateVariableCollection $send
  *                Contains the variables that are send to the template.
  * @property-read ezcTemplateVariableCollection $receive
@@ -123,12 +123,12 @@ class ezcTemplate
     private $properties = array( 'configuration' => null,
                                  'usedConfiguration' => null,
                                  'send' => null,
-                                 'receive' => null, 
+                                 'receive' => null,
                                  'compiledTemplatePath' => null,
                                  'tstTree' => false,
                                  'astTree' =>  false,
                                  'stream'  => false,
-                                 'streamStack' => false,
+                                 'streamStack' => array(),
                                  'output' => "",
                                  'trimWhitespace' => true,
                                );
@@ -145,7 +145,7 @@ class ezcTemplate
     {
         switch ( $name )
         {
-            case 'send': 
+            case 'send':
             case 'receive':
             case 'tstTree':
             case 'astTree':
@@ -216,12 +216,12 @@ class ezcTemplate
     {
         switch ( $name )
         {
-            case 'send': 
+            case 'send':
                 if ( !$value instanceof ezcTemplateVariableCollection )
                 {
                     throw new ezcBaseValueException( $name, $value, 'ezcTemplateVariableCollection' );
-                } 
-                $this->properties[$name] = $value; 
+                }
+                $this->properties[$name] = $value;
                 break;
 
             case 'configuration':
@@ -299,12 +299,12 @@ class ezcTemplate
         {
             $this->properties["file"] = $location;
             $this->properties["stream"] = $location->getPath();
-        } 
+        }
         elseif ( $config->locator )
         {
             $this->properties["stream"] = $config->locator->translatePath($this->properties["stream"]);
         }
-        
+
         if ( strlen( $this->properties["stream"] ) > 0 && !ezcBaseFile::isAbsolutepath($this->properties["stream"]) ) // Is it a relative path?
         {
             $this->properties["stream"] = $config->templatePath . DIRECTORY_SEPARATOR . $this->properties["stream"];
@@ -325,9 +325,9 @@ class ezcTemplate
                 throw new ezcTemplateCompilationFailedException( "Failed to create and execute compiled code after " . ($counter - 1) . " tries." );
             }
 
-            if ( file_exists( $compiled->path ) && 
-               ( !$config->checkModifiedTemplates || 
-                  filemtime( $this->properties["stream"] ) <= filemtime( $compiled->path ) ) ) 
+            if ( file_exists( $compiled->path ) &&
+               ( !$config->checkModifiedTemplates ||
+                  filemtime( $this->properties["stream"] ) <= filemtime( $compiled->path ) ) )
             {
                 if ( !$config->executeTemplate )
                 {
@@ -358,7 +358,7 @@ class ezcTemplate
 
             if ($parser->hasCacheBlocks && !$config->disableCache )
             {
-                $fetchCacheInfo = new ezcTemplateFetchCacheInformation(); 
+                $fetchCacheInfo = new ezcTemplateFetchCacheInformation();
                 $this->properties["tstTree"]->accept( $fetchCacheInfo );
 
                 $tstToAst = new ezcTemplateTstToAstCachedTransformer( $parser, $fetchCacheInfo->cacheTst );

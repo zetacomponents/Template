@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -35,7 +35,7 @@
  */
 class ezcTemplateVariableSourceToTstParser extends ezcTemplateSourceToTstParser
 {
- 
+
     /**
      * The variable name which was found while parsing or null if no variable
      * has been found yet.
@@ -73,13 +73,13 @@ class ezcTemplateVariableSourceToTstParser extends ezcTemplateSourceToTstParser
             {
                 if ( $cursor->current() == '#' )
                 {
-                    throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, 
+                    throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor,
                             ezcTemplateSourceToTstErrorMessages::MSG_INVALID_VARIABLE_NAME, ezcTemplateSourceToTstErrorMessages::LNG_INVALID_NAMESPACE_ROOT_MARKER );
                 }
 
                 if ( $cursor->current() == ':' )
                 {
-                    throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, 
+                    throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor,
                             ezcTemplateSourceToTstErrorMessages::MSG_INVALID_VARIABLE_NAME, ezcTemplateSourceToTstErrorMessages::LNG_INVALID_NAMESPACE_MARKER );
                 }
 

@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -86,7 +86,7 @@ class ezcTemplateIncludeSourceToTstParser extends ezcTemplateSourceToTstParser
             throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, ezcTemplateSourceToTstErrorMessages::MSG_MODIFYING_EXPRESSION_NOT_ALLOWED );
         }
 
- 
+
         $include = new ezcTemplateIncludeTstNode( $this->parser->source, $this->startCursor, $this->currentCursor );
         $include->file = $this->lastParser->rootOperator;
 
@@ -157,7 +157,7 @@ class ezcTemplateIncludeSourceToTstParser extends ezcTemplateSourceToTstParser
                 if ( $this->lastParser->rootOperator instanceof ezcTemplateVariableTstNode )
                 {
                     $asOptional = true;
-                } 
+                }
                 else
                 {
                     $asOptional = false;
@@ -166,7 +166,7 @@ class ezcTemplateIncludeSourceToTstParser extends ezcTemplateSourceToTstParser
                 // $asOptional = false;
                 $lastVal = $this->lastParser->rootOperator;
                 $this->findNextElement();
-            } 
+            }
             else
             {
                 throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_VARIABLE );
@@ -174,14 +174,14 @@ class ezcTemplateIncludeSourceToTstParser extends ezcTemplateSourceToTstParser
 
             if ( $this->currentCursor->match( 'as' ) )
             {
-                $expr = $lastVal;  
+                $expr = $lastVal;
                 $this->findNextElement();
 
                 if ( !$this->parseOptionalType( "Variable", null, false ) )
                 {
                     throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_VARIABLE );
                 }
- 
+
                 $variables[ $this->lastParser->element->name ] = $expr ;
             }
             else
@@ -255,7 +255,7 @@ class ezcTemplateIncludeSourceToTstParser extends ezcTemplateSourceToTstParser
                 {
                     $this->parser->symbolTable->enter( $this->lastParser->element->name, ezcTemplateSymbolTable::VARIABLE );
                 }
- 
+
                 $variables[ $oldName ] = $this->lastParser->element->name;
             }
             else
@@ -274,7 +274,7 @@ class ezcTemplateIncludeSourceToTstParser extends ezcTemplateSourceToTstParser
      * the end of the block.
      *
      * @param ezcTemplateCursor $cursor
-     * @param ezcTemplateTstNode $operator  
+     * @param ezcTemplateTstNode $operator
      * @param bool $finalize
      * @return bool
      *

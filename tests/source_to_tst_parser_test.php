@@ -39,7 +39,7 @@ class ezcTemplateSourceToTstParserTest extends ezcTestCase
 {
     public static function suite()
     {
-         return new PHPUnit\Framework\TestSuite( __CLASS__ );
+        return new PHPUnit\Framework\TestSuite( __CLASS__ );
     }
 
     /**

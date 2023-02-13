@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -34,7 +34,7 @@
 class ezcTemplateLiteralArrayAstNode extends ezcTemplateAstNode
 {
     /**
-     * An array containing all the values of the array. 
+     * An array containing all the values of the array.
      * Those values can be expressions.
      *
      * @var array(ezcTemplateAstNode)
@@ -42,7 +42,7 @@ class ezcTemplateLiteralArrayAstNode extends ezcTemplateAstNode
     public $value = array();
 
     /**
-     * An array containing all the keys of the array. 
+     * An array containing all the keys of the array.
      * Those key values can be expressions.
      *
      * @var array(ezcTemplateAstNode)

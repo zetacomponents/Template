@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -27,28 +27,28 @@
 /**
  * Trims away whitespace from parser elements.
  *
- * This class can perform several types of whitespace removal on the parsed 
- * result to ensure that the output given to the end user does not contain 
- * unneccesary whitespaces which can be important in some output contexts.  It 
- * is important to note that this will only remove whitespace from the parsed 
- * result and is not applied at run-time, this means that whitespace in 
+ * This class can perform several types of whitespace removal on the parsed
+ * result to ensure that the output given to the end user does not contain
+ * unneccesary whitespaces which can be important in some output contexts.  It
+ * is important to note that this will only remove whitespace from the parsed
+ * result and is not applied at run-time, this means that whitespace in
  * outputted strings are kept.
  *
- * The various removal types are configurable in the constructor which allows 
- * it to be tailored to what is set as the current output context, e.g.  
+ * The various removal types are configurable in the constructor which allows
+ * it to be tailored to what is set as the current output context, e.g.
  * whitespace removal for plain text might be different than XHTML output.
- * Controlling the removal types are done with boolean switches in member 
+ * Controlling the removal types are done with boolean switches in member
  * variables, they are:
  *
- * - $trimTrailing - If enabled it will remove the trailing whitespace from 
- * text blocks after the last block in the code, it checks each line to see if 
+ * - $trimTrailing - If enabled it will remove the trailing whitespace from
+ * text blocks after the last block in the code, it checks each line to see if
  * it contains whitespace only and if it does the line is removed.
- * - $trimLeading - Same as $trimTrailing but the trimming is done for the 
+ * - $trimLeading - Same as $trimTrailing but the trimming is done for the
  * leading lines of the text block found before the first block in the code.
- * - $trimBlockEol - Trims away the whitespace and newline after all command 
+ * - $trimBlockEol - Trims away the whitespace and newline after all command
  * blocks, this essentially makes the block line disappear from the output.
- * - $trimIndent - Trims away whitespace for each line in each block level by 
- * using the minimum column as the last trimming point. All lines in the same 
+ * - $trimIndent - Trims away whitespace for each line in each block level by
+ * using the minimum column as the last trimming point. All lines in the same
  * block level will get the same amount of whitespace removed.
  *
  * Example of leading whitespace removal:
@@ -87,8 +87,8 @@
  * "{/if}"
  * </code>
  *
- * here the whitespace with EOL marker is removed only at the end of the the 
- * block line, this ensures that critical newlines are kept for the {$item} 
+ * here the whitespace with EOL marker is removed only at the end of the the
+ * block line, this ensures that critical newlines are kept for the {$item}
  * code and that the {if} block do not add extra newlines
  *
  * Example of indent removal:
@@ -102,8 +102,8 @@
  * "{/if}"
  * </code>
  *
- * here the whitespace with EOL marker is removed only at the end of the the 
- * block line, this ensures that critical newlines are kept for the {$item} 
+ * here the whitespace with EOL marker is removed only at the end of the the
+ * block line, this ensures that critical newlines are kept for the {$item}
  * code and that the {if} block do not add extra newlines
  *
  * @package Template
@@ -222,7 +222,7 @@ class ezcTemplateWhitespaceRemoval
                                 if ( $elements[ $el + 1 ] instanceof ezcTemplateBlockTstNode && !( $elements[ $el + 1 ] instanceof ezcTemplateOutputBlockTstNode ) )
                                 {
                                     $trimmed = trim( $lines[$i][0], " \t" );
-                                    if ( strlen( $trimmed  ) == 0 ) 
+                                    if ( strlen( $trimmed  ) == 0 )
                                     {
                                         $lines[$i][0] = "";
                                     }
@@ -235,13 +235,13 @@ class ezcTemplateWhitespaceRemoval
                                     $last = sizeof( $lines ) -1;
 
                                     $trimmed = trim( $lines[$last][0], " \t" );
-                                    if ( strlen ( trim( $lines[$last][0], " \t") ) == 0  ) 
+                                    if ( strlen ( trim( $lines[$last][0], " \t") ) == 0  )
                                     {
                                         $lines[ $last ][0] = "";
                                     }
                                 }
                             }
-                        } 
+                        }
                     }
 
                     $element->setTextLines( $lines );

@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -86,7 +86,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
      * When an operator is found it will call ezcTemplateParser::handleOperatorPrecedence()
      * to get proper order of operators in the tree.
      *
-     * Look ahead: Operand 
+     * Look ahead: Operand
      *
      * @param ezcTemplateCursor $cursor
      * @return bool
@@ -110,7 +110,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
             {
                 throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_VARIABLE );
             }
-            
+
             return true;
         }
         elseif ( $this->parsePreOperator( $cursor, $match ) ) // Parse: -, +, !
@@ -140,12 +140,12 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
             //  Operator check.
             $this->findNextElement();
 
-            if ( $this->foundArrayAppend ) 
+            if ( $this->foundArrayAppend )
             {
                 // After an array append follows an assignment.
                 if ( !$this->parseAssignmentOperator( $cursor ) )
                 {
-                    throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, 
+                    throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor,
                        ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_ARRAY_APPEND_ASSIGNMENT );
                 }
             }
@@ -157,7 +157,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
                     return true;
                 }
 
-                if ( $type != "Variable" || $operator != "AssignmentOperator" ) 
+                if ( $type != "Variable" || $operator != "AssignmentOperator" )
                 {
                     $canDoAssignment = false;
                 }
@@ -173,7 +173,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
             $this->parsePreOperator( $cursor, $match );
 
             $type = $this->parseOperand( $cursor, array(), false );
-            if ( !$type ) 
+            if ( !$type )
             {
                 throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_NON_MODIFYING_OPERAND );
             }
@@ -204,7 +204,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
     /**
      * Returns true if the type $name can be parsed. If the $allowedTypes array is not empty, the array should also have the element $name.
      *
-     * @param string $name 
+     * @param string $name
      * @param array(string) $allowedTypes
      * @return bool
      */
@@ -216,7 +216,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
     /**
      * Parse an operand.
      *
-     * @param ezcTemplateCursor $cursor 
+     * @param ezcTemplateCursor $cursor
      * @param array(string) $allowedTypes
      * @param bool $allowPostModification
      * @param bool $allowArrayAppend
@@ -290,7 +290,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
     /**
      * Parse a pre operator
      *
-     * @param ezcTemplateCursor $cursor 
+     * @param ezcTemplateCursor $cursor
      * @return bool
      */
     protected function parsePreOperator( $cursor )
@@ -315,7 +315,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
         if ( $operatorName !== false )
         {
             // Ignore the unary + operator.
-            if ( $operatorName == "+" ) 
+            if ( $operatorName == "+" )
             {
                 $this->findNextElement();
                 $cursor->advance();
@@ -364,7 +364,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
     /**
      * Parse a pre operator
      *
-     * @param ezcTemplateCursor $cursor 
+     * @param ezcTemplateCursor $cursor
      * @return bool
      */
     protected function parsePostOperator( $cursor )
@@ -394,7 +394,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
     /**
      * Parse a pre modifying operator
      *
-     * @param ezcTemplateCursor $cursor 
+     * @param ezcTemplateCursor $cursor
      * @return bool
      */
     protected function parsePreModifyingOperator( $cursor )
@@ -436,9 +436,9 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
     /**
      * Parse the array fetch
      *
-     * @param ezcTemplateCursor $cursor 
+     * @param ezcTemplateCursor $cursor
      * @param bool $allowArrayAppend
-     * @return array(bool,bool) = Continue, repeat. 
+     * @return array(bool,bool) = Continue, repeat.
      */
     protected function parseArrayFetch( $cursor, $allowArrayAppend = false )
     {
@@ -447,7 +447,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
         while ( $cursor->match( '[' ) )
         {
             $this->findNextElement();
-            
+
             if ( $allowArrayAppend && $cursor->match( "]" ) )
             {
                 $operator = new ezcTemplateArrayAppendOperatorTstNode( $this->parser->source, $this->startCursor, $cursor );
@@ -471,7 +471,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
                 {
                     throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_SQUARE_BRACKET_CLOSE );
                 }
-                
+
                 $operator = $this->lastParser->fetch;
             }
 
@@ -490,7 +490,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
             $this->findNextElement();
         }
 
-        return array(($operator !== null), true); 
+        return array(($operator !== null), true);
     }
 
     protected function parsePropertyFetch($cursor)
@@ -512,7 +512,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
             }
             else if ( !$this->parseRequiredType( 'Identifier' ) )
             {
-                throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, 
+                throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor,
                         ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_IDENTIFIER_OR_VARIABLE );
             }
 
@@ -532,7 +532,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
     /**
      * Parse assignment operator
      *
-     * @param ezcTemplateCursor $cursor 
+     * @param ezcTemplateCursor $cursor
      * @return bool
      */
     protected function parseAssignmentOperator( $cursor )
@@ -555,7 +555,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
     /**
      * Parse operator
      *
-     * @param ezcTemplateCursor $cursor 
+     * @param ezcTemplateCursor $cursor
      * @param bool $canDoAssignment
      * @return bool
      */
@@ -566,11 +566,11 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
         // This will contain the name of the operator if it is found.
         $operatorName = false;
 
-        $operatorSymbols = array( 
+        $operatorSymbols = array(
         array( 3,
         array( '===', '!==' ) ),
         array( 2,
-        array( 
+        array(
         '==', '!=',
         '<=', '>=',
         '&&', '||',
@@ -690,12 +690,12 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
             {
                 if ( $op instanceof ezcTemplateOperatorTstNode )
                 {
-                    throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, 
+                    throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor,
                         sprintf( ezcTemplateSourceToTstErrorMessages::MSG_LHS_IS_NOT_VARIABLE, $op->symbol ));
                 }
                 else
                 {
-                    throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, 
+                    throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor,
                         ezcTemplateSourceToTstErrorMessages::MSG_LHS_IS_NOT_VARIABLE_NO_SYMBOL );
                 }
             }
@@ -710,7 +710,7 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
 
         if ( $lhs instanceof ezcTemplateModifyingBlockTstNode )
         {
-                throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, 
+                throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor,
                       ezcTemplateSourceToTstErrorMessages::MSG_OPERATOR_LHS_IS_MODIFYING_BLOCK );
         }
 
@@ -732,12 +732,12 @@ class ezcTemplateExpressionSourceToTstParser extends ezcTemplateSourceToTstParse
         {
             if ( $op instanceof ezcTemplateOperatorTstNode )
             {
-                throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, 
+                throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor,
                     sprintf( ezcTemplateSourceToTstErrorMessages::MSG_OPERATOR_RHS_IS_MODIFYING_BLOCK, $op->symbol ));
             }
             else
             {
-                throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, 
+                throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor,
                     ezcTemplateSourceToTstErrorMessages::MSG_OPERATOR_IS_MODIFYING_BLOCK );
             }
         }

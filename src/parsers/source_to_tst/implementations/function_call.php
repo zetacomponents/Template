@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -66,7 +66,7 @@ class ezcTemplateFunctionCallSourceToTstParser extends ezcTemplateSourceToTstPar
      * The end is reached when it finds the character ].
      *
      * @param ezcTemplateCursor $cursor
-     * @param ezcTemplateTstNode $operator  
+     * @param ezcTemplateTstNode $operator
      * @param bool $finalize
      * @return bool
      */
@@ -167,7 +167,7 @@ class ezcTemplateFunctionCallSourceToTstParser extends ezcTemplateSourceToTstPar
 
         }
     }
-    
+
     /**
      * Parse a parameter
      *
@@ -183,11 +183,11 @@ class ezcTemplateFunctionCallSourceToTstParser extends ezcTemplateSourceToTstPar
         }
 
         $this->readingParameter = true;
-        
-        
+
+
         $startCursor = clone $cursor;
         $namedParameter = $cursor->pregMatch( "#^[a-zA-Z_][a-zA-Z0-9_]*#" );
-        
+
         if ( $namedParameter !== false )
         {
            $this->findNextElement();
@@ -202,7 +202,7 @@ class ezcTemplateFunctionCallSourceToTstParser extends ezcTemplateSourceToTstPar
         {
             $cursor->copy($startCursor);
         }
-        
+
         // Check for expression, the parser will call self::atEnd() to check for end of expression.
         $expressionStartCursor = clone $cursor;
         $expressionParser = new ezcTemplateExpressionSourceToTstParser( $this->parser, $this, null );

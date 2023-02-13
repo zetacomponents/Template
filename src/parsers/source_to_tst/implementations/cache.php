@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -35,7 +35,7 @@ class ezcTemplateCacheSourceToTstParser extends ezcTemplateSourceToTstParser
 {
     /**
      * Passes control to parent.
-     * 
+     *
      * @param ezcTemplateParser $parser
      * @param ezcTemplateSourceToTstParser $parentParser
      * @param ezcTemplateCursor $startCursor
@@ -69,7 +69,7 @@ class ezcTemplateCacheSourceToTstParser extends ezcTemplateSourceToTstParser
             $this->appendElement( $cacheNode);
             $this->findNextElement( $cursor );
 
-            if ( !$cursor->match( "}" ) ) 
+            if ( !$cursor->match( "}" ) )
             {
                 throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_CURLY_BRACKET_CLOSE );
             }
@@ -97,7 +97,7 @@ class ezcTemplateCacheSourceToTstParser extends ezcTemplateSourceToTstParser
                 $this->appendElement( $cacheNode );
                 $this->findNextElement( $cursor );
 
-                if ( !$cursor->match( "}" ) ) 
+                if ( !$cursor->match( "}" ) )
                 {
                     throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_CURLY_BRACKET_CLOSE );
                 }
@@ -132,7 +132,7 @@ class ezcTemplateCacheSourceToTstParser extends ezcTemplateSourceToTstParser
                     }
                     $cacheNode->keys[] = $this->lastParser->children[0];
                     $this->findNextElement( $cursor );
-                } 
+                }
                 while ( $cursor->match(",") );
 
                 // $this->parser->template->configuration->cacheSystem->appendCacheKeys( $values );
@@ -149,7 +149,7 @@ class ezcTemplateCacheSourceToTstParser extends ezcTemplateSourceToTstParser
                 {
                     throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, ezcTemplateSourceToTstErrorMessages::MSG_MODIFYING_EXPRESSION_NOT_ALLOWED );
                 }
-         
+
                 // Append the parameter to the "namedParameters" array.
                 $cacheNode->ttl = $this->lastParser->rootOperator;
             }
@@ -162,14 +162,14 @@ class ezcTemplateCacheSourceToTstParser extends ezcTemplateSourceToTstParser
         $this->appendElement( $cacheNode);
         $this->findNextElement( $cursor );
 
-        if ( !$cursor->match( "}" ) ) 
+        if ( !$cursor->match( "}" ) )
         {
             throw new ezcTemplateParserException( $this->parser->source, $cursor, $cursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_CURLY_BRACKET_CLOSE );
         }
 
         return true;
     }
-    
+
 }
 
 ?>

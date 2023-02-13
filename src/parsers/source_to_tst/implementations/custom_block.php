@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -35,7 +35,7 @@ class ezcTemplateCustomBlockSourceToTstParser extends ezcTemplateSourceToTstPars
 {
     /**
      * Passes control to parent.
-     * 
+     *
      * @param ezcTemplateParser $parser
      * @param ezcTemplateSourceToTstParser $parentParser
      * @param ezcTemplateCursor $startCursor
@@ -109,7 +109,7 @@ class ezcTemplateCustomBlockSourceToTstParser extends ezcTemplateSourceToTstPars
             $this->appendElement( $cb );
             return true;
         }
- 
+
         // Check for the name of the custom block
         // Note: The code inside the ( ?: ) brace ensures that the next character
         // is not an alphabetical character ie. a word boundary
@@ -118,7 +118,7 @@ class ezcTemplateCustomBlockSourceToTstParser extends ezcTemplateSourceToTstPars
         {
             return false;
         }
-       
+
         $name = $matches[1][0];
 
         $cursor->advance( strlen( $name ) );
@@ -138,13 +138,13 @@ class ezcTemplateCustomBlockSourceToTstParser extends ezcTemplateSourceToTstPars
         $cb->name = $name;
         $this->block->isNestingBlock = $cb->isNestingBlock = $def->hasCloseTag;
 
-        $excessParameters = isset( $def->excessParameters ) && $def->excessParameters ? true : false;  
+        $excessParameters = isset( $def->excessParameters ) && $def->excessParameters ? true : false;
 
         if ( isset( $def->startExpressionName ) && $def->startExpressionName != "" )
         {
             if ( !in_array( $def->startExpressionName, $def->optionalParameters ) && !in_array( $def->startExpressionName, $def->requiredParameters ) )
             {
-                throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, 
+                throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor,
                     sprintf( ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_REQUIRED_OR_OPTIONAL_PARAMETER_DEFINITION_IN_CUSTOM_BLOCK, $def->startExpressionName ) );
             }
 
@@ -172,20 +172,20 @@ class ezcTemplateCustomBlockSourceToTstParser extends ezcTemplateSourceToTstPars
             $match = $cursor->pregMatch( "#^[a-zA-Z_][a-zA-Z0-9_-]*#");
             if ( !$match )
             {
-                throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, 
+                throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor,
                    sprintf(  ezcTemplateSourceToTstErrorMessages::MSG_UNEXPECTED_TOKEN, $cursor->current( 1 ) ) );
- 
+
             }
 
             if ( !$excessParameters && !in_array( $match, $def->optionalParameters ) && !in_array( $match, $def->requiredParameters ) )
             {
-                throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, 
+                throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor,
                     sprintf(  ezcTemplateSourceToTstErrorMessages::MSG_UNKNOWN_CUSTOM_BLOCK_PARAMETER, $match) );
             }
 
             if ( array_key_exists( $match, $cb->namedParameters )  )
             {
-                throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, 
+                throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor,
                     sprintf( ezcTemplateSourceToTstErrorMessages::MSG_REASSIGNMENT_CUSTOM_BLOCK_PARAMETER, $match ) );
             }
 
@@ -207,7 +207,7 @@ class ezcTemplateCustomBlockSourceToTstParser extends ezcTemplateSourceToTstPars
                 throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, ezcTemplateSourceToTstErrorMessages::MSG_MODIFYING_EXPRESSION_NOT_ALLOWED );
             }
 
- 
+
             // Append the parameter to the "namedParameters" array.
             $cb->namedParameters[ $match ] = $this->lastParser->rootOperator;
         }
@@ -217,7 +217,7 @@ class ezcTemplateCustomBlockSourceToTstParser extends ezcTemplateSourceToTstPars
         {
             if ( !array_key_exists( $val, $cb->namedParameters) )
             {
-                throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, 
+                throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor,
                     sprintf(  ezcTemplateSourceToTstErrorMessages::MSG_MISSING_CUSTOM_BLOCK_PARAMETER, $val ) );
             }
         }

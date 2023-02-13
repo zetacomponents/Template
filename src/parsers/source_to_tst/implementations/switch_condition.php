@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -60,7 +60,7 @@ class ezcTemplateSwitchConditionSourceToTstParser extends ezcTemplateSourceToTst
         {
             // skip whitespace and comments
             $this->findNextElement();
-            
+
             if ( !$cursor->match( '}' ) )
             {
                 throw new ezcTemplateParserException( $this->parser->source, $this->startCursor, $this->currentCursor, ezcTemplateSourceToTstErrorMessages::MSG_EXPECT_CURLY_BRACKET_CLOSE );
@@ -132,7 +132,7 @@ class ezcTemplateSwitchConditionSourceToTstParser extends ezcTemplateSourceToTst
 
                 $this->findNextElement();
 
-            } 
+            }
             while ( $cursor->match( ',' ) );
 
             if ( !$cursor->match( '}' ) )
