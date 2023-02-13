@@ -292,7 +292,7 @@ class ezcTemplateCursorTest extends ezcTestCase
         self::assertAttributeSame( 2, 'line', $receiver );
         self::assertAttributeSame( 11, 'column', $receiver );
 
-        self::assertSame( false, $subText );
+        self::assertSame( '', $subText );
         self::assertSame( false, $current );
 
         $this->cursor->gotoBeginning();
