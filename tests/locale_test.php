@@ -47,7 +47,7 @@ class ezcTemplateLocaleTest extends ezcTestCase
         {
             $this->setLocale( LC_ALL, 'de_DE', 'de_DE.UTF-8', 'deu', 'german' );
         }
-        catch ( PHPUnit_Framework_Exception $e )
+        catch ( \PHPUnit\Framework\Exception $e )
         {
             $this->markTestSkipped( 'System does not support setting locale to de_DE.UTF-8.' );
         }
