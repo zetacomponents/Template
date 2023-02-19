@@ -133,30 +133,3 @@ Method calls
 Think about how to do method calls, the class must be known and the
 function must be allowed in the template language. Allowing any method
 to be called could be fatal.
-
-
-
-Old (outdated) list
--------------------
-
-- Create meta-code class which are elements which wrap around real code elements, it has a method to fetch the first real element from its children.
-  this allows optimizer and other code which inspects the code tree to go past these elements.
-  typical meta-code are:
-  - changing run-time options such indentation, spacing, hanging braces etc.
-  - inlining code
-- Operator names need to be consistant, ie. either addition and multiplication or plus and multiply.
-- Rename ezcParser to ezcParserControl and all references of 'main parser' to 'parser control'.
-
-- Added syntax validator class which is invoked when new type, operator and block elements are made.
-  * Check for assignment usage inside an expression, not allowed.
-  * Check for typical mistakes when coming from PHP.
-    o Check for isset()
-  * Check for identifiers which are reserved keywords (by template or PHP):
-    o true, false, and, or
-- Uncomment all typehints.
-- Make sure cursor class handles tab characters
-- Don't expose all variables in element types, instead use methods or magic-properties.
-
-compiler:
-- There should be an 'object' style file generated with information about a template, e.g. related templates
-  and other files.
