@@ -331,7 +331,7 @@ abstract class ezcTemplateSourceToTstParser
      *
      * @return bool
      */
-    protected function parseOptionalType( $type, ezcTemplateCursor $startCursor = null, $mergeElements = true )
+    protected function parseOptionalType( $type, ?ezcTemplateCursor $startCursor = null, $mergeElements = true )
     {
         if ( is_string( $type ) )
         {
@@ -383,7 +383,7 @@ abstract class ezcTemplateSourceToTstParser
      * @param bool $mergeElements
      * @return bool
      */
-    protected function parseRequiredType( $type, ezcTemplateCursor $startCursor = null, $mergeElements = true )
+    protected function parseRequiredType( $type, ?ezcTemplateCursor $startCursor = null, $mergeElements = true )
     {
         if ( is_string( $type ) )
         {

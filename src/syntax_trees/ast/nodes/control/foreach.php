@@ -66,9 +66,9 @@ class ezcTemplateForeachAstNode extends ezcTemplateStatementAstNode
      * @param ezcTemplateVariableAstNode $value
      * @param ezcTemplateBodyAstNode $body
      */
-    public function __construct( ezcTemplateAstNode $array = null,
-                                 ezcTemplateVariableAstNode $key = null, ezcTemplateVariableAstNode $value = null,
-                                 ezcTemplateBodyAstNode $body = null )
+    public function __construct( ?ezcTemplateAstNode $array = null,
+                                 ?ezcTemplateVariableAstNode $key = null, ?ezcTemplateVariableAstNode $value = null,
+                                 ?ezcTemplateBodyAstNode $body = null )
     {
         parent::__construct();
         $this->arrayExpression = $array;

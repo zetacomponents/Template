@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -35,7 +35,7 @@ class ezcTemplateRootAstNode extends ezcTemplateBodyAstNode
 {
     /**
      * Whether or not the template uses the cache.
-     * 
+     *
      * @var bool
      */
     public $cacheTemplate = false;
@@ -49,14 +49,14 @@ class ezcTemplateRootAstNode extends ezcTemplateBodyAstNode
 
     /**
      * The time to live of the cache.
-     * 
+     *
      * @var ezcTemplateAstNode
      */
     public $ttl = null;
 
     /**
      * Is this template the start of the program.
-     * 
+     *
      * @var bool
      */
     public $startProgram = true;
@@ -81,7 +81,7 @@ class ezcTemplateRootAstNode extends ezcTemplateBodyAstNode
      * @param array(ezcTemplateAstNode) $statements
      * @param bool $startProgram
      */
-    public function __construct( Array $statements = null, $startProgram = true )
+    public function __construct( ?array $statements = null, $startProgram = true )
     {
         parent::__construct();
         $this->startProgram = $startProgram;

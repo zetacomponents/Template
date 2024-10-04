@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -48,10 +48,10 @@ class ezcTemplateCaseAstNode extends ezcTemplateStatementAstNode
     /**
      * Initialize with function name code and optional arguments
      *
-     * @param ezcTemplateAstNode $match 
+     * @param ezcTemplateAstNode $match
      * @param ezcTemplateBodyAstNode $body
      */
-    public function __construct( ezcTemplateAstNode $match = null, ezcTemplateBodyAstNode $body = null )
+    public function __construct( ?ezcTemplateAstNode $match = null, ?ezcTemplateBodyAstNode $body = null )
     {
         parent::__construct();
         $this->match = $match;

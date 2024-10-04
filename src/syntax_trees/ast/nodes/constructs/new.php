@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -43,10 +43,10 @@ class ezcTemplateNewAstNode extends ezcTemplateParameterizedAstNode
     /**
      * Constructs a 'new' class element.
      *
-     * @param string $class 
+     * @param string $class
      * @param array(ezcTemplateAstNode) $functionArguments
      */
-    public function __construct( $class = null, array $functionArguments = null )
+    public function __construct( $class = null, ?array $functionArguments = null )
     {
         parent::__construct();
         $this->class = $class;

@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -70,15 +70,15 @@
  *
  * To check if any source code has been loaded or set use hasCode().
  *
- * @property string $stream  
+ * @property string $stream
  *              The PHP stream path for the template source file.
- * @property string $resource 
+ * @property string $resource
  *              The resource string which requested this template.
  * @property string $code
  *              The original template code taken from the template file or
  *              other resource. Contains a string with the source code or
  *              false if no code is read yet.
- * @property ezcTemplateOutputContext $context 
+ * @property ezcTemplateOutputContext $context
  *              The current context for the template code. Will be used for
  *              parsing and run-time behaviour.
  *
@@ -170,7 +170,7 @@ class ezcTemplateSourceCode
      *                                    means to use the current context in
      *                                    the template manager.
      */
-    public function __construct( $stream, $resource = false, $code = false, ezcTemplateOutputContext $context = null )
+    public function __construct( $stream, $resource = false, $code = false, ?ezcTemplateOutputContext $context = null )
     {
         $this->stream = $stream;
         $this->resource = $resource;

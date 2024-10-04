@@ -282,7 +282,7 @@ class ezcTemplate
      * @throws ezcTemplateFileNotWriteableException
      *         If the directory could not be created.
      */
-    public function process( $location, ezcTemplateConfiguration $config = null )
+    public function process( $location, ?ezcTemplateConfiguration $config = null )
     {
         if ( $config === null )
         {

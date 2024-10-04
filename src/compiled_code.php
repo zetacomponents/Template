@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -34,14 +34,14 @@
  * If you are unsure where the compiled file resides you can use the static
  * methods findCurrent() and findAll() to get those identifiers.
  *
- * @property-read string $identifier 
+ * @property-read string $identifier
  *              The unique identifier for the compiled file.
- * @property-read string $path       
+ * @property-read string $path
  *              The complete (but relative) path to the compiled file. Will
  *              be set even if it does not exist.
- * @property ezcTemplateOutputContext $context  
+ * @property ezcTemplateOutputContext $context
  *              The context used for the currently compiled file.
- * @property ezcTemplate $template  
+ * @property ezcTemplate $template
  *              The template which is used when executing the template code.
  *
  * @package Template
@@ -154,7 +154,7 @@ class ezcTemplateCompiledCode
      * @param ezcTemplate $template
      */
     public function __construct( $identifier, $path,
-                                 /*ezcTemplateOutputContext*/ $context = null, ezcTemplate $template = null )
+                                 /*ezcTemplateOutputContext*/ $context = null, ?ezcTemplate $template = null )
     {
         $this->properties['identifier'] = $identifier;
         $this->properties['path'] = $path;
@@ -182,7 +182,7 @@ class ezcTemplateCompiledCode
 
         if ( !$this->isValid() )
             throw new ezcTemplateInvalidCompiledFileException( $this->identifier, $this->path );
-        
+
             $this->send = clone $this->template->send;
             $this->receive = $this->template->receive;
         return include( $this->path );
@@ -191,7 +191,7 @@ class ezcTemplateCompiledCode
 
     /**
      * The compiled template calls this method to see if the current template should be recompiled.
-     * Usually its the first method called in the template. 
+     * Usually its the first method called in the template.
      *
      * A template should be recompiled if either one of the following rules apply:
      * - The template source is newer than the compiled template.
@@ -199,7 +199,7 @@ class ezcTemplateCompiledCode
      *
      * @param int $engineID
      *
-     * @throws ezcTemplateOutdatedCompilationException when the template should be recompiled. 
+     * @throws ezcTemplateOutdatedCompilationException when the template should be recompiled.
      * @return void
      */
     protected function checkRequirements( $engineID, $compileFlags = array() )

@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -46,7 +46,7 @@ class ezcTemplateFunctionCallAstNode extends ezcTemplateParameterizedAstNode
      */
     public function checkAndSetTypeHint()
     {
-        $this->typeHint = self::TYPE_ARRAY | self::TYPE_VALUE; 
+        $this->typeHint = self::TYPE_ARRAY | self::TYPE_VALUE;
     }
 
     /**
@@ -55,7 +55,7 @@ class ezcTemplateFunctionCallAstNode extends ezcTemplateParameterizedAstNode
      * @param string $name
      * @param array(ezcTemplateAstNode) $functionArguments
      */
-    public function __construct( $name, Array $functionArguments = null )
+    public function __construct( $name, ?array $functionArguments = null )
     {
         parent::__construct( 1, false );
         $this->name = $name;

@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -39,7 +39,7 @@ class ezcTemplateArrayFetchOperatorAstNode extends ezcTemplateOperatorAstNode
      * @param ezcTemplateAstNode $array
      * @param array(ezcTemplateAstNode) $fetches
      */
-    public function __construct( ezcTemplateAstNode $array = null, Array $fetches = null )
+    public function __construct( ?ezcTemplateAstNode $array = null, ?array $fetches = null )
     {
         parent::__construct( self::OPERATOR_TYPE_BINARY );
         // This is a special binary operator since it allows more than two parameters.
@@ -96,12 +96,12 @@ class ezcTemplateArrayFetchOperatorAstNode extends ezcTemplateOperatorAstNode
 
         throw new ezcTemplateTypeHintException();
     }
- 
+
 
     /**
      * Calls visitArrayFetchOperator() of the ezcTemplateBasicAstNodeVisitor interface.
      *
-     * @param ezcTemplateAstNodeVisitor $visitor 
+     * @param ezcTemplateAstNodeVisitor $visitor
      *        The visitor object which can visit the current code element.
      * @return ezcTemplateAstNode
      */
